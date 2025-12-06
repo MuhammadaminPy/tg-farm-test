@@ -3,10 +3,14 @@ from telegram import Update, WebAppInfo, InlineKeyboardButton, InlineKeyboardMar
 from telegram.ext import Application, CommandHandler, ContextTypes
 import sqlite3
 import logging
-# 💡 ИСПРАВЛЕНИЕ: Обеспечение импорта datetime
-import datetime 
+import datetime
+import os 
 
-TOKEN = '7691409512:AAEvk_vx5n2PLc17Gu39rBRWssq3h6kEC0'
+TOKEN = os.getenv("TELEGRAM_BOT_TOKEN") 
+
+if not TOKEN:
+    raise ValueError("Токен бота не найден! Установите переменную окружения TELEGRAM_BOT_TOKEN.")
+
 DB_NAME = 'bot_db.db'
 WEB_APP_URL = 'https://muhammadaminpy.github.io/tg-farm-test/index.html'
 
