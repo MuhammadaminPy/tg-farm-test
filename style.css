@@ -1,0 +1,304 @@
+/* Базовые цвета и шрифты */
+:root {
+    --color-green-dark: #38761d; /* Темно-зеленый для фона/текста */
+    --color-green-light: #6aa84f; /* Светло-зеленый для кнопок */
+    --color-yellow-main: #f1c232; /* Основной желтый */
+    --color-yellow-light: #f9e1a7; /* Светло-желтый для акцентов */
+    --color-brown-wood: #783f04; /* Коричневый для рамок */
+    --font-handwritten: 'Caveat', cursive; /* Красивый шрифт */
+    --font-base: sans-serif;
+}
+
+/* Общий сброс и шрифт */
+body {
+    font-family: var(--font-base);
+    background-color: var(--color-yellow-light); /* Светлый фон */
+    color: var(--color-green-dark);
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Заголовки и текст с акцентным шрифтом */
+h1, h2, .farm-quote {
+    font-family: var(--font-handwritten);
+    color: var(--color-brown-wood);
+    text-shadow: 1px 1px 2px var(--color-green-light);
+}
+
+/* --- Хедер (Верхняя Панель) --- */
+.header {
+    background-color: var(--color-green-dark);
+    color: white;
+    padding: 20px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 5px solid var(--color-brown-wood);
+}
+.header h1 {
+    color: var(--color-yellow-main);
+    margin: 0;
+    font-size: 2.5em;
+}
+
+/* Навигация */
+.main-nav {
+    display: flex;
+    gap: 15px;
+}
+.nav-button {
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-weight: bold;
+    transition: background-color 0.3s, transform 0.2s;
+    text-align: center;
+    border: 2px solid white;
+}
+.profile-btn { background-color: var(--color-yellow-main); color: var(--color-brown-wood); }
+.farm-btn { background-color: var(--color-green-light); color: white; }
+.admin-btn { background-color: var(--color-brown-wood); color: var(--color-yellow-light); }
+
+.nav-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* --- Основной Контент --- */
+.container {
+    flex-grow: 1;
+    padding: 40px;
+    /* Устанавливаем две колонки для верхних элементов и одну для нижнего */
+    display: grid;
+    grid-template-columns: 2fr 1fr; 
+    grid-template-rows: auto auto; 
+    gap: 30px;
+}
+.full-width {
+    grid-column: 1 / -1; /* Занимает всю ширину сетки (две колонки) */
+}
+
+/* Карточки с информацией */
+.balance-card, .news-card {
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Баланс */
+.balance-card {
+    background-color: white;
+    border: 5px dashed var(--color-green-light); /* Красивая "фермерская" рамка */
+}
+.balance-info {
+    font-size: 1.2em;
+    margin-bottom: 20px;
+}
+.balance-info span {
+    font-weight: 700;
+    color: var(--color-yellow-main);
+    text-decoration: underline;
+}
+.yellow-border {
+    border-color: var(--color-yellow-main) !important;
+}
+
+/* Новостной блок */
+.news-card {
+    background-color: var(--color-green-light);
+    color: white;
+}
+.news-card h2 {
+    color: var(--color-yellow-main);
+}
+.farm-quote {
+    margin-top: 15px;
+    font-size: 1.3em;
+    font-style: italic;
+    color: var(--color-yellow-light);
+    border-top: 1px dashed var(--color-yellow-light);
+    padding-top: 10px;
+}
+
+/* Кнопки действий */
+.balance-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+}
+.action-btn {
+    padding: 12px 25px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    font-weight: bold;
+    transition: background-color 0.3s, opacity 0.3s;
+    box-shadow: 0 4px 0 var(--color-brown-wood);
+}
+.action-btn:active {
+    box-shadow: 0 2px 0 var(--color-brown-wood);
+    transform: translateY(2px);
+}
+
+.green-btn {
+    background-color: var(--color-green-light);
+    color: white;
+}
+.green-btn:hover { background-color: #559542; }
+
+.yellow-btn {
+    background-color: var(--color-yellow-main);
+    color: var(--color-brown-wood);
+}
+.yellow-btn:hover { background-color: #d8a82d; }
+
+.reinvest-btn {
+    background-color: var(--color-brown-wood);
+    color: white;
+}
+.reinvest-btn:hover { background-color: #633503; }
+
+/* --- Купленные Животные --- */
+.purchased-animals-card {
+    background-color: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+    border: 5px dashed var(--color-green-light);
+}
+
+.purchased-animals-card h2 {
+    background-color : var(--color-brown-wood);
+    text-shadow: 1px 1px 2px var(--color-yellow-main);
+    margin-bottom: 20px;
+    text-align: center;
+}
+.animal-status-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+.active-animal-card {
+    background-color: var(--color-yellow-light);
+    border: 3px solid var(--color-green-light);
+    border-radius: 10px;
+    padding: 15px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+.active-animal-card h4 {
+    color: var(--color-green-dark);
+    font-family: var(--font-handwritten);
+    font-size: 1.5em;
+    margin-top: 0;
+    border-bottom: 1px dashed var(--color-green-light);
+    padding-bottom: 5px;
+}
+.status-line {
+    font-size: 1em;
+    padding: 3px 0;
+}
+.status-line strong {
+    color: var(--color-brown-wood);
+}
+.progress-bar {
+    height: 10px;
+    background-color: #e0e0e0;
+    border-radius: 5px;
+    margin-top: 5px;
+}
+.progress-fill {
+    height: 100%;
+    background-color: var(--color-green-light);
+    border-radius: 5px;
+    transition: width 0.5s;
+}
+.no-animals-msg {
+    grid-column: 1 / -1;
+    text-align: center;
+    font-style: italic;
+    color: var(--color-brown-wood);
+    padding: 20px;
+    border: 1px dashed var(--color-yellow-main);
+    border-radius: 5px;
+}
+
+/* --- Футер (Подвал) --- */
+.footer {
+    background-color: var(--color-green-dark);
+    color: var(--color-yellow-main);
+    text-align: center;
+    padding: 15px 0;
+    border-top: 3px solid var(--color-brown-wood);
+    margin-top: auto; /* Прижимает футер к низу */
+}
+
+/* --- АДАПТИВНОСТЬ (MEDIA QUERIES) --- */
+
+/* Ширина экрана для телефонов (максимум 768px) */
+@media (max-width: 768px) {
+    
+    /* Основная Сетка */
+    .container {
+        grid-template-columns: 1fr; /* Одна колонка для всех блоков */
+        gap: 20px;
+        padding: 20px;
+    }
+    .full-width {
+        grid-column: 1 / 1; 
+    }
+
+    /* Хедер */
+    .header {
+        flex-direction: column;
+        text-align: center;
+        padding: 15px 10px;
+    }
+    .main-nav {
+        flex-direction: column;
+        width: 100%;
+        gap: 8px;
+        margin-top: 10px;
+    }
+    .nav-button {
+        padding: 10px;
+    }
+
+    /* Баланс и Новости */
+    .balance-card, .news-card, .purchased-animals-card {
+        padding: 20px;
+    }
+    .balance-actions {
+        flex-direction: column;
+        gap: 8px;
+    }
+    .action-btn {
+        width: 100%; /* Кнопки на всю ширину */
+    }
+    
+    /* Животные на Главной */
+    .animal-status-grid {
+        grid-template-columns: 1fr; /* Одна карточка в ряд на телефоне */
+    }
+
+    /* Профиль (profile.css) */
+    .profile-page {
+        padding: 20px;
+    }
+    .profile-card {
+        padding: 25px;
+    }
+    .profile-actions {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    /* Админка (admin.css) */
+    .admin-page {
+        grid-template-columns: 1fr;
+    }
+}

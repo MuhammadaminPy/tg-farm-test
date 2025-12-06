@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>👤 Профиль Пользователя</title>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="./profile.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header class="header">
+        <h1>👤 Личный Кабинет</h1>
+        <nav class="main-nav">
+            <a href="index.html" class="nav-button farm-btn"><i class="fas fa-home"></i> Главная</a>
+            <a href="farm.html" class="nav-button farm-btn"><i class="fas fa-tractor"></i> Ферма</a>
+        </nav>
+    </header>
+
+    <main class="container profile-page">
+        <section class="profile-card yellow-border">
+            <h2>Ваши Личные Данные</h2>
+            <div id="user-data">
+                <p class="immutable-data"><strong>Ваш ID:</strong> <span id="user-id-display">N/A</span></p> 
+                <p><strong>Имя Пользователя:</strong> <span id="username-display">N/A</span></p>
+                <p><strong>Email:</strong> N/A</p>
+                <p class="immutable-data"><strong>Дата Регистрации:</strong> <span id="reg-date-display">N/A</span></p>
+                <p><strong>Пароль:</strong> ********** (Изменен <span id="password-changes-display">0</span> из 2 раз)</p>
+                <p><strong>Дата Рождения:</strong> <span id="dob-display">N/A</span></p>
+            </div>
+            
+            <div class="profile-actions">
+                <button id="edit-profile-btn" class="action-btn green-btn"><i class="fas fa-edit"></i> Изменить Профиль</button>
+                <button id="logout-btn" class="action-btn yellow-btn"><i class="fas fa-sign-out-alt"></i> Выйти с Профиля</button>
+                <button id="delete-profile-btn" class="action-btn reinvest-btn"><i class="fas fa-trash"></i> Удалить Профиль</button>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2025 Ферма Инвестиций. Ваш личный уголок.</p>
+    </footer>
+
+    <script src="./profile.js"></script>
+</body>
+</html>

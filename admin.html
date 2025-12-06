@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🛠️ Админ-Панель</title>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+    <header class="header">
+        <h1>🛠️ Администрирование Фермы</h1>
+        <nav class="main-nav">
+            <a href="index.html" class="nav-button farm-btn"><i class="fas fa-home"></i> Главная</a>
+        </nav>
+    </header>
+
+    <main class="container admin-page">
+        
+        <section class="admin-card green-bg">
+            <h2>➕ Добавить Новое Животное</h2>
+            <form id="add-animal-form">
+                <div class="form-group">
+                    <label for="animal-name">Название Животного:</label>
+                    <input type="text" id="animal-name" required>
+                </div>
+                <div class="form-group">
+                    <label for="animal-price">Цена (Р):</label>
+                    <input type="number" id="animal-price" step="0.01" min="1" required>
+                </div>
+                <div class="form-group">
+                    <label for="animal-income">Доход в день (Р):</label>
+                    <input type="number" id="animal-income" step="0.01" min="0.01" required>
+                </div>
+                
+                <p class="duration-display">Расчетный Срок Работы: <strong id="calculated-duration">N/A</strong> дней</p>
+                
+                <button type="submit" class="action-btn yellow-btn"><i class="fas fa-plus"></i> Добавить в Список</button>
+            </form>
+        </section>
+        
+        <section class="admin-card yellow-border">
+            <h2>⚙️ Управление Пользователями</h2>
+            
+            <form id="admin-replenish-form" class="admin-form">
+                <h4>1. Пополнить Баланс</h4>
+                <div class="form-group">
+                    <label for="replenish-user-id">ID Пользователя:</label>
+                    <input type="number" id="replenish-user-id" required>
+                </div>
+                <div class="form-group">
+                    <label for="replenish-amount">Сумма (Р):</label>
+                    <input type="number" id="replenish-amount" step="0.01" min="1" required>
+                </div>
+                <button type="submit" class="action-btn green-btn"><i class="fas fa-money-bill-wave"></i> Зачислить</button>
+            </form>
+            
+            <hr style="margin: 20px 0;">
+
+            <form id="admin-give-animal-form" class="admin-form">
+                <h4>2. Выдать Животное</h4>
+                <div class="form-group">
+                    <label for="give-animal-user-id">ID Пользователя:</label>
+                    <input type="number" id="give-animal-user-id" required>
+                </div>
+                <div class="form-group">
+                    <label for="animal-select">Выберите Животное:</label>
+                    <select id="animal-select" required></select>
+                </div>
+                <button type="submit" class="action-btn yellow-btn"><i class="fas fa-gift"></i> Выдать</button>
+            </form>
+        </section>
+        
+        <section class="admin-card green-bg full-width">
+            <h2>📜 Текущие Животные (Общий Список)</h2>
+            <ul id="current-animals-list">
+                </ul>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2025 Ферма Инвестиций. Панель Управления.</p>
+    </footer>
+
+    <script src="admin.js"></script>
+</body>
+</html>

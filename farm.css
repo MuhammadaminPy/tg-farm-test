@@ -1,0 +1,59 @@
+/* Ферма: Стили для карточек животных */
+.farm-page h2 {
+    text-align: center;
+    color: var(--color-green-dark);
+    margin-bottom: 30px;
+}
+
+.animal-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    padding: 20px;
+}
+
+.animal-card {
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    text-align: center;
+    border: 3px solid var(--color-yellow-main);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.animal-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.animal-card h3 {
+    font-family: var(--font-handwritten);
+    color: var(--color-brown-wood);
+    font-size: 1.8em;
+    margin-top: 0;
+}
+
+.animal-card p {
+    margin: 5px 0;
+    font-size: 1.1em;
+}
+
+.animal-card strong {
+    color: var(--color-green-dark);
+}
+
+.buy-btn {
+    background-color: var(--color-green-light);
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    margin-top: 15px;
+    transition: background-color 0.2s;
+}
+.buy-btn:hover {
+    background-color: var(--color-green-dark);
+}

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌾 Ферма Инвестиций | Главная</title>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+</head>
+<body>
+    <header class="header">
+        <h1>🌳 Наша Зеленая Ферма 💰</h1>
+        <nav class="main-nav">
+            <a href="profile.html" class="nav-button profile-btn"><i class="fas fa-user"></i> Профиль</a>
+            <a href="farm.html" class="nav-button farm-btn"><i class="fas fa-tractor"></i> Ферма</a>
+            <a href="admin.html" class="nav-button admin-btn"><i class="fas fa-hammer"></i> Админ</a>
+        </nav>
+    </header>
+
+    <main class="container">
+        <section class="balance-card yellow-border">
+            <h2>💰 Мои Накопления</h2>
+            <div class="balance-info">
+                <p>Баланс для Покупок (Игровой): <span id="purchase-balance">0.00 Р</span></p>
+                <p>Реальный Баланс (Для Вывода): <span id="real-balance">0.00 Р</span></p>
+            </div>
+            <div class="balance-actions">
+                <button class="action-btn green-btn" id="replenish-stars-btn"><i class="fas fa-star"></i> Пополнить Stars</button>
+                <button class="action-btn yellow-btn"><i class="fas fa-hand-holding-usd"></i> Вывести</button>
+                <button class="action-btn reinvest-btn"><i class="fas fa-exchange-alt"></i> Реинвест</button>
+            </div>
+        </section>
+
+        <section class="news-card green-bg">
+            <h2>🔔 Новости Фермы</h2>
+            <p>Последнее обновление: Добавлен новый вид животного – Утка!</p>
+            <p class="farm-quote">"Инвестируй сегодня, чтобы собрать урожай завтра."</p>
+        </section>
+        
+        <section id="purchased-animals" class="purchased-animals-card yellow-border full-width">
+            <h2>🐄 Моя Активная Ферма</h2>
+            <div id="animal-status-grid" class="animal-status-grid">
+                <p class="no-animals-msg">У вас пока нет активных животных. Перейдите на страницу Ферма, чтобы начать!</p>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2025 Ферма Инвестиций. Все права защищены.</p>
+    </footer>
+
+    <script src="./scripts.js"></script>
+</body>
+</html>
