@@ -13,7 +13,7 @@
 }
 
 .animal-card {
-    background-color: white;
+    background-color: var(--tg-secondary-bg-color); /* Dark Mode support */
     border-radius: 15px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     padding: 20px;
@@ -53,6 +53,8 @@
     font-weight: bold;
     margin-top: 15px;
     transition: background-color 0.2s;
+    display: block; /* Полная ширина для лучшей мобильной адаптации */
+    width: 100%; 
 }
 .buy-btn:hover {
     background-color: var(--color-green-dark);

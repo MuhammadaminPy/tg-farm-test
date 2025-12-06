@@ -116,6 +116,42 @@ document.addEventListener('DOMContentLoaded', () => {
         updateBalances();
     }
     
+    // НОВАЯ ФУНКЦИЯ ФОРМАТИРОВАНИЯ ВРЕМЕНИ
+    /**
+     * Форматирует общее количество дней (в десятичном формате) в строку "Дни, Часы, Минуты".
+     * @param {number} totalDays - Общее количество дней (например, 29.97).
+     * @returns {string} Отформатированная строка времени.
+     */
+    const formatDuration = (totalDays) => {
+        if (totalDays <= 0) return 'Срок истек';
+
+        // Переводим в общее количество минут и округляем
+        const totalMinutes = Math.round(totalDays * 24 * 60);
+        if (totalMinutes < 1) return 'Менее 1 мин.';
+
+        const minutesInDay = 24 * 60;
+        const minutesInHour = 60;
+
+        let days = Math.floor(totalMinutes / minutesInDay);
+        let minutes = totalMinutes % minutesInDay;
+
+        let hours = Math.floor(minutes / minutesInHour);
+        minutes = minutes % minutesInHour;
+
+        let parts = [];
+        if (days > 0) parts.push(`${days} дн.`);
+        if (hours > 0) parts.push(`${hours} ч.`);
+        if (minutes > 0 && parts.length < 2) parts.push(`${minutes} мин.`); // Показываем минуты, если не показано слишком много
+
+        // Если есть дни, показываем только дни и часы (для краткости)
+        if (days > 0 && parts.length > 2) {
+            return parts.slice(0, 2).join(' ');
+        }
+        
+        return parts.join(' ');
+    };
+    // КОНЕЦ НОВОЙ ФУНКЦИИ
+
     const now = new Date(); 
 
     const getPurchasedAnimals = () => {
@@ -141,6 +177,9 @@ document.addEventListener('DOMContentLoaded', () => {
             const remainingDays = (remainingIncome > 0) ? (remainingIncome / animal.income) : 0;
             const progressPercent = (earnedIncome / animal.targetIncome) * 100;
             
+            // 💡 ИСПОЛЬЗУЕМ НОВУЮ ФУНКЦИЮ ДЛЯ ФОРМАТИРОВАНИЯ ВРЕМЕНИ
+            const remainingTimeFormatted = formatDuration(remainingDays); 
+            
             const card = document.createElement('div');
             card.className = 'active-animal-card';
             card.innerHTML = `
@@ -150,13 +189,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 <div class="progress-bar">
                     <div class="progress-fill" style="width: ${progressPercent.toFixed(1)}%;"></div>
                 </div>
-                <div class="status-line"><strong>Осталось жить:</strong> ${remainingDays.toFixed(2)} дней</div>
+                <div class="status-line"><strong>Осталось жить:</strong> ${remainingTimeFormatted}</div>
             `;
             animalStatusGrid.appendChild(card);
             
             if (remainingIncome <= 0) {
-                 card.style.opacity = '0.6';
-                 card.innerHTML += `<div style="color: red; font-weight: bold; margin-top: 10px;">🔴 Срок работы истек!</div>`;
+                card.style.opacity = '0.6';
+                card.innerHTML += `<div style="color: red; font-weight: bold; margin-top: 10px;">🔴 Срок работы истек!</div>`;
             }
         });
     };

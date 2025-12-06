@@ -8,7 +8,7 @@
 .profile-card {
     width: 100%;
     max-width: 650px; 
-    background-color: #fcfcfc; 
+    background-color: var(--tg-secondary-bg-color); /* Dark Mode support */
     padding: 40px;
     border-radius: 20px;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
@@ -30,16 +30,18 @@
     padding: 12px 0;
     border-bottom: 1px dashed var(--color-green-light);
     text-align: left;
+    display: flex; /* Используем flexbox для разделения метки и значения */
+    justify-content: space-between;
 }
 #user-data strong {
     color: var(--color-brown-wood);
     min-width: 150px;
-    display: inline-block;
+    /* display: inline-block; - УДАЛЕНО, используем flex на родительском <p> */
 }
 
 /* Стили для неизменяемых данных (Дата Регистрации) */
 .immutable-data {
-    color: #90a4ae; /* Серый цвет для обозначения, что данные нельзя изменить */
+    color: var(--tg-hint-color); /* Цвет хинта от Telegram */
     font-style: italic;
     border-bottom: 2px solid #ccc !important;
 }
@@ -69,8 +71,25 @@
     text-align: left;
 }
 .form-group input {
-    width: 90%;
+    width: 100%; /* Полная ширина для Bootstrap-совместимости */
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
+    background-color: var(--tg-secondary-bg-color); /* Dark Mode support */
+    color: var(--tg-text-color); /* Dark Mode support */
+}
+@media (max-width: 768px) {
+    .profile-page {
+        padding: 20px; 
+    }
+    .profile-card {
+        padding: 25px; 
+    }
+    .profile-actions {
+        flex-direction: column; 
+        gap: 10px;
+    }
+    .form-group input {
+        width: 100%;
+    }
 }

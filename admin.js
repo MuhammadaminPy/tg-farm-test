@@ -10,6 +10,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const giveAnimalForm = document.getElementById('admin-give-animal-form');
     const animalSelect = document.getElementById('animal-select');
 
+    const registeredUsersList = document.getElementById('registered-users-list');
+    const userCountDisplay = document.getElementById('user-count');
+
     const calculateDuration = (price, dailyIncome) => {
         if (price > 0 && dailyIncome > 0) {
             return ((price * 1.5) / dailyIncome).toFixed(2);
@@ -39,7 +42,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const getExistingUsers = () => {
         const users = localStorage.getItem('allUsers');
-        const initialUsers = users ? JSON.parse(users) : []; 
+        const initialUsers = users ? JSON.parse(users) : [{ id: 100001, username: 'admin', password: '123', purchaseBalance: 0, realBalance: 0 }]; 
         return initialUsers;
     };
     
@@ -56,15 +59,40 @@ document.addEventListener('DOMContentLoaded', () => {
         localStorage.setItem('purchasedAnimals', JSON.stringify(animals));
     };
 
+    const renderUserList = () => {
+        const users = getExistingUsers();
+        registeredUsersList.innerHTML = '';
+        userCountDisplay.textContent = users.length;
+
+        if (users.length === 0) {
+            registeredUsersList.innerHTML = '<tr><td colspan="4" class="text-center">Нет зарегистрированных пользователей.</td></tr>';
+            return;
+        }
+
+        users.forEach(user => {
+            const row = document.createElement('tr');
+            row.innerHTML = `
+                <td>${user.id}</td>
+                <td>${user.username}</td>
+                <td>${(user.purchaseBalance || 0).toFixed(2)} Р</td>
+                <td>${user.registrationDate || 'N/A'}</td>
+            `;
+            registeredUsersList.appendChild(row);
+        });
+    };
+
     const renderAnimalList = () => {
         currentAnimalsList.innerHTML = '';
         animalsDB.forEach(animal => {
             const li = document.createElement('li');
+            li.className = 'list-group-item';
             li.textContent = `${animal.name} | Цена: ${animal.price} Р | Доход: ${animal.income} Р | Срок: ${animal.duration} д.`;
             currentAnimalsList.appendChild(li);
         });
     };
+    
     renderAnimalList();
+    renderUserList();
 
     const loadAnimalOptions = () => {
         const animalsDB = getAnimalDB();
@@ -123,7 +151,7 @@ document.addEventListener('DOMContentLoaded', () => {
         animalsDB.push(newAnimal); 
         saveAnimalDB(animalsDB);
 
-        alert(`Животное "${name}" успешно добавлено!\nСрок работы: ${duration} дней.`);
+        alert(`Животное "${name}" успешно добавлено! Срок работы: ${duration} дней.`);
         
         renderAnimalList();
         loadAnimalOptions(); 
@@ -155,6 +183,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         alert(`✅ Баланс для покупок пользователя ID ${userId} пополнен на ${amount.toFixed(2)} Р.`);
         replenishForm.reset();
+        renderUserList();
     });
 
     giveAnimalForm.addEventListener('submit', (e) => {

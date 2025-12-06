@@ -72,15 +72,16 @@ h1, h2, .farm-quote {
 .container {
     flex-grow: 1;
     padding: 40px;
-    /* Устанавливаем две колонки для верхних элементов и одну для нижнего */
+    /* УСТАНОВКА СЕТКИ ДЛЯ ПК: ДВЕ КОЛОНКИ СВЕРХУ */
     display: grid;
-    grid-template-columns: 2fr 1fr; 
-    grid-template-rows: auto auto; 
+    grid-template-columns: 1fr 1fr; /* 1:1 */
     gap: 30px;
 }
+/* БЛОК "МОЯ АКТИВНАЯ ФЕРМА" ДОЛЖЕН БЫТЬ .full-width, ЧТОБЫ ЗАНЯТЬ 2 КОЛОНКИ */
 .full-width {
     grid-column: 1 / -1; /* Занимает всю ширину сетки (две колонки) */
 }
+
 
 /* Карточки с информацией */
 .balance-card, .news-card {
@@ -251,6 +252,24 @@ h1, h2, .farm-quote {
     .full-width {
         grid-column: 1 / 1; 
     }
+    
+    /* 💡 УНИКАЛЬНЫЙ БОКС ДЛЯ НОВОСТЕЙ В СЕРЕДИНЕ НА ТЕЛЕФОНЕ */
+    .news-card {
+        /* Применяем уникальный стиль, если хотите, чтобы он отличался */
+        border: 4px solid var(--color-brown-wood); 
+        outline: 2px solid var(--color-yellow-main);
+        outline-offset: -2px;
+        background-color: var(--color-green-dark); 
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+        /* Изменяем цвет заголовков для контраста */
+        color: var(--color-yellow-light);
+    }
+    .news-card h2 {
+        color: white;
+    }
+    .farm-quote {
+        color: var(--color-yellow-main);
+    }
 
     /* Хедер */
     .header {
@@ -269,7 +288,7 @@ h1, h2, .farm-quote {
     }
 
     /* Баланс и Новости */
-    .balance-card, .news-card, .purchased-animals-card {
+    .balance-card, .purchased-animals-card {
         padding: 20px;
     }
     .balance-actions {
